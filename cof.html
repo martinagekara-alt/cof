@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahwa ya Kenya | Authentic Highland Arabica Experience</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        soil: {
+                            50: '#FAF5F0',
+                            100: '#F2E6D9',
+                            200: '#E2C8AF',
+                            500: '#B85228', // Red Volcanic Soil
+                            700: '#833414',
+                            900: '#3D1606', // Rich Roasted Coffee
+                        },
+                        savannah: {
+                            50: '#FCFAF2',
+                            100: '#F7F3E1',
+                            400: '#E2CD7C', // Golden Sunlight
+                            500: '#C9A938',
+                        },
+                        highland: {
+                            50: '#F1F7F4',
+                            500: '#2A5C43', // Lush Coffee Bush Leaf
+                            800: '#143323', // Dark Highland Forest
+                            900: '#0B1E14'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Custom Scrollbar & Animations */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #143323;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B85228;
+            border-radius: 4px;
+        }
+        .bg-pattern-kenya {
+            background-image: radial-gradient(rgba(184, 82, 40, 0.15) 1px, transparent 1px), radial-gradient(rgba(42, 92, 67, 0.15) 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(11, 30, 20, 0.75) 0%, rgba(61, 22, 6, 0.85) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(184, 82, 40, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-soil-900 text-soil-50 font-sans antialiased selection:bg-soil-500 selection:text-white overflow-x-hidden">
+
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-4 sm:px-8 bg-highland-900/80 backdrop-blur-md border-b border-soil-700/30">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-soil-500 to-savannah-400 flex items-center justify-center text-white shadow-lg shadow-soil-500/30 group-hover:rotate-12 transition-transform">
+                    <i class="fa-solid font-bold text-lg fa-mug-hot"></i>
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-wide text-white block leading-none">KAHWA <span class="text-savannah-400 text-xs font-sans tracking-widest uppercase block mt-0.5">YA KENYA</span></span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-soil-200">
+                <a href="#regions" class="hover:text-savannah-400 transition-colors">Origins & Regions</a>
+                <a href="#shop" class="hover:text-savannah-400 transition-colors">Bean Showcase</a>
+                <a href="#process" class="hover:text-savannah-400 transition-colors">Bean-to-Cup</a>
+                <a href="#brew-calculator" class="hover:text-savannah-400 transition-colors">Brew Guide</a>
+                <a href="#flavor-profiler" class="hover:text-savannah-400 transition-colors">Flavor Profiler</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCartModal()" class="relative p-2.5 rounded-full bg-soil-800 hover:bg-soil-700 text-savannah-400 transition-colors border border-soil-700/50">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-soil-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <a href="#shop" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-soil-500 to-soil-700 hover:from-soil-700 hover:to-soil-900 text-white font-semibold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-md shadow-soil-900/50 hover:shadow-soil-500/20 border border-soil-500/50">
+                    <span>Order Fresh Beans</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-soil-200 p-2 text-xl focus:outline-none">
+                    <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-soil-800 flex flex-col gap-4 text-center">
+            <a href="#regions" onclick="toggleMobileMenu()" class="text-soil-200 hover:text-savannah-400 py-1">Origins & Regions</a>
+            <a href="#shop" onclick="toggleMobileMenu()" class="text-soil-200 hover:text-savannah-400 py-1">Bean Showcase</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="text-soil-200 hover:text-savannah-400 py-1">Bean-to-Cup Story</a>
+            <a href="#brew-calculator" onclick="toggleMobileMenu()" class="text-soil-200 hover:text-savannah-400 py-1">Interactive Brew Guide</a>
+            <a href="#flavor-profiler" onclick="toggleMobileMenu()" class="text-soil-200 hover:text-savannah-400 py-1">Flavor Profiler</a>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
+        <!-- Hero Background Image & Layer Effects -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=2000&q=80" alt="Kenyan Coffee Highlands" class="w-full h-full object-cover object-center scale-105 filter brightness-75">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-4">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-soil-500/20 border border-savannah-400/40 backdrop-blur-md mb-6 animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-savannah-400"></span>
+                <span class="text-savannah-400 text-xs sm:text-sm font-semibold uppercase tracking-widest">Karibu Kenya • Handpicked Single Origins</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                Crafted in Red Volcanic Soil. <br>
+                <span class="bg-gradient-to-r from-savannah-400 via-soil-200 to-soil-500 bg-clip-text text-transparent">Blessed by Mt. Kenya Mist.</span>
+            </h1>
+
+            <p class="text-base sm:text-xl text-soil-200 max-w-3xl mx-auto font-light mb-10 leading-relaxed">
+                Experience the distinctive world-renowned brightness, deep floral notes, and rich winey acidity of authentic SL28, SL34, Batian, and Ruiru 11 cultivars—direct from smallholder coffee co-ops.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#shop" class="w-full sm:w-auto px-8 py-4 rounded-full bg-soil-500 hover:bg-soil-700 text-white font-semibold text-sm uppercase tracking-wider transition-all shadow-xl shadow-soil-900/60 flex items-center justify-center gap-3 group">
+                    <span>Explore Single-Origin Beans</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#brew-calculator" class="w-full sm:w-auto px-8 py-4 rounded-full bg-highland-900/70 hover:bg-highland-800 text-savannah-400 border border-savannah-400/30 font-semibold text-sm uppercase tracking-wider transition-all backdrop-blur-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Brew Ratio Calculator</span>
+                </a>
+            </div>
+
+            <!-- Highland Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-8 border-t border-white/10 text-left">
+                <div class="glass-card p-4 rounded-xl">
+                    <p class="text-xs text-soil-200 uppercase tracking-wider">Highland Elevation</p>
+                    <p class="font-serif text-2xl font-bold text-savannah-400 mt-1">1,700m - 2,100m</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <p class="text-xs text-soil-200 uppercase tracking-wider">Iconic Varieties</p>
+                    <p class="font-serif text-2xl font-bold text-savannah-400 mt-1">SL28, SL34 & Batian</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <p class="text-xs text-soil-200 uppercase tracking-wider">Processing</p>
+                    <p class="font-serif text-2xl font-bold text-savannah-400 mt-1">Double Fermented</p>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <p class="text-xs text-soil-200 uppercase tracking-wider">Key Flavor Profile</p>
+                    <p class="font-serif text-2xl font-bold text-savannah-400 mt-1">Blackcurrant & Citrus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="regions" class="py-24 px-4 sm:px-8 bg-highland-900 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-soil-500 font-semibold text-xs sm:text-sm uppercase tracking-widest block mb-2">Terroir & Topography</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Kenya’s Coffee Microclimates</h2>
+                <p class="text-soil-200 mt-4 text-base font-light">Each volcanic ridge around Mount Kenya and the Great Rift Valley yields a distinct flavor complexity. Select a region to explore its terroir and cup characteristics.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Region Selector List -->
+                <div class="lg:col-span-5 space-y-3" id="region-selector-container">
+                    <!-- Javascript populates region selector buttons here -->
+                </div>
+
+                <!-- Region Detail Interactive Card -->
+                <div class="lg:col-span-7 bg-soil-900/90 border border-soil-700/50 rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden shadow-2xl" id="region-detail-card">
+                    <!-- Content populated via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="py-24 px-4 sm:px-8 bg-soil-900 relative bg-pattern-kenya">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-savannah-400 font-semibold text-xs sm:text-sm uppercase tracking-widest block mb-2">Artisanal Roastery</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Direct-Trade Bean Showcase</h2>
+                </div>
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="filter-buttons">
+                    <button onclick="filterProducts('all')" class="filter-btn active px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-soil-500 text-white border border-soil-500">All Beans</button>
+                    <button onclick="filterProducts('single-origin')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-soil-800 text-soil-200 border border-soil-700 hover:border-soil-500">Single Origin</button>
+                    <button onclick="filterProducts('reserve')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-soil-800 text-soil-200 border border-soil-700 hover:border-soil-500">Microlot Reserve</button>
+                    <button onclick="filterProducts('signature')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-soil-800 text-soil-200 border border-soil-700 hover:border-soil-500">Swahili Blends</button>
+                </div>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+                <!-- Javascript dynamically loads coffee items here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-24 px-4 sm:px-8 bg-highland-800 relative text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-savannah-400 font-semibold text-xs sm:text-sm uppercase tracking-widest block mb-2">Harvesting Excellence</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Kenyan "Bean to Cup" Journey</h2>
+                <p class="text-soil-200 mt-4 text-base font-light">Why is Kenyan coffee considered among the finest in the world? Discover our time-honored double-washed method and sun drying on raised African beds.</p>
+            </div>
+
+            <!-- Process Steps Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                <!-- Step 1 -->
+                <div class="glass-card p-6 rounded-2xl relative border-t-4 border-t-soil-500 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-soil-500/20 text-savannah-400 font-serif font-bold text-xl flex items-center justify-center mb-6 border border-soil-500/40">01</div>
+                    <h3 class="font-serif text-xl font-bold mb-3 text-white">Selective Cherry Pick</h3>
+                    <p class="text-soil-200 text-sm font-light leading-relaxed">Farmers hand-select only deep crimson, fully ripe cherries on slopes of Mt. Kenya, ensuring peak natural sugar levels.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-6 rounded-2xl relative border-t-4 border-t-savannah-400 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-savannah-400/20 text-savannah-400 font-serif font-bold text-xl flex items-center justify-center mb-6 border border-savannah-400/40">02</div>
+                    <h3 class="font-serif text-xl font-bold mb-3 text-white">Double Fermentation</h3>
+                    <p class="text-soil-200 text-sm font-light leading-relaxed">Wet-milled using fresh mountain streams, followed by a unique 24-72hr double fermentation that yields signature winey acidity.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-6 rounded-2xl relative border-t-4 border-t-highland-500 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-highland-500/20 text-highland-500 font-serif font-bold text-xl flex items-center justify-center mb-6 border border-highland-500/40">03</div>
+                    <h3 class="font-serif text-xl font-bold mb-3 text-white">African Raised Beds</h3>
+                    <p class="text-soil-200 text-sm font-light leading-relaxed">Dried slowly under the high-altitude equatorial sun on elevated bamboo tables to maintain moisture equilibrium.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-card p-6 rounded-2xl relative border-t-4 border-t-soil-700 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-soil-700/20 text-soil-200 font-serif font-bold text-xl flex items-center justify-center mb-6 border border-soil-700/40">04</div>
+                    <h3 class="font-serif text-xl font-bold mb-3 text-white">Precision Micro-Roast</h3>
+                    <p class="text-soil-200 text-sm font-light leading-relaxed">Roasted in light-to-medium profiles to highlight sparkling blackcurrant notes, delicate jasmine florals, and complex sugar development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="brew-calculator" class="py-24 px-4 sm:px-8 bg-soil-900 border-t border-soil-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Calculator Info Header -->
+                <div class="lg:col-span-5">
+                    <span class="text-soil-500 font-semibold text-xs sm:text-sm uppercase tracking-widest block mb-2">Barista Craft</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mb-6">Interactive Brew Ratio Calculator</h2>
+                    <p class="text-soil-200 text-base font-light mb-8 leading-relaxed">
+                        Kenyan coffee beans are dense and packed with floral acidity. To extract their full potential, precise water-to-coffee ratios and grind sizes are essential. Adjust the sliders below to calculate your ideal recipe.
+                    </p>
+
+                    <!-- Quick Brew Tips Box -->
+                    <div class="bg-highland-900/80 p-6 rounded-2xl border border-highland-500/30 space-y-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-droplet text-savannah-400 text-lg mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Water Temperature</h4>
+                                <p class="text-soil-200 text-xs mt-0.5">Use filtered mountain water off the boil at 93°C – 95°C (200°F - 203°F).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-clock text-savannah-400 text-lg mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Bloom Time</h4>
+                                <p class="text-soil-200 text-xs mt-0.5">Bloom with 2x coffee weight in water for 45 seconds to release trapped CO2.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Form Component -->
+                <div class="lg:col-span-7 bg-soil-800/90 p-6 sm:p-8 rounded-3xl border border-soil-700/60 shadow-2xl">
+                    <!-- Method Selector Tabs -->
+                    <label class="text-xs uppercase tracking-wider text-soil-200 font-semibold block mb-3">1. Choose Brew Method</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-8" id="brew-method-buttons">
+                        <button onclick="setBrewMethod('v60')" id="btn-v60" class="brew-btn active p-3 rounded-xl border border-soil-500 bg-soil-500 text-white font-medium text-xs text-center flex flex-col items-center gap-2">
+                            <i class="fa-solid fa-filter text-lg"></i>
+                            <span>Hario V60</span>
+                        </button>
+                        <button onclick="setBrewMethod('chemex')" id="btn-chemex" class="brew-btn p-3 rounded-xl border border-soil-700 bg-soil-900/50 text-soil-200 font-medium text-xs text-center flex flex-col items-center gap-2 hover:border-soil-500">
+                            <i class="fa-solid fa-flask text-lg"></i>
+                            <span>Chemex</span>
+                        </button>
+                        <button onclick="setBrewMethod('aeropress')" id="btn-aeropress" class="brew-btn p-3 rounded-xl border border-soil-700 bg-soil-900/50 text-soil-200 font-medium text-xs text-center flex flex-col items-center gap-2 hover:border-soil-500">
+                            <i class="fa-solid fa-compress text-lg"></i>
+                            <span>AeroPress</span>
+                        </button>
+                        <button onclick="setBrewMethod('frenchpress')" id="btn-frenchpress" class="brew-btn p-3 rounded-xl border border-soil-700 bg-soil-900/50 text-soil-200 font-medium text-xs text-center flex flex-col items-center gap-2 hover:border-soil-500">
+                            <i class="fa-solid fa-whiskey-glass text-lg"></i>
+                            <span>French Press</span>
+                        </button>
+                    </div>
+
+                    <!-- Coffee Amount Slider -->
+                    <div class="space-y-6 mb-8">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs uppercase tracking-wider text-soil-200 font-semibold">2. Coffee Weight</label>
+                                <span class="text-savannah-400 font-serif font-bold text-xl"><span id="calc-coffee-display">18</span> grams</span>
+                            </div>
+                            <input type="range" id="coffee-range" min="10" max="60" value="18" step="1" oninput="updateBrewCalculator()" class="w-full accent-soil-500 bg-soil-900 rounded-lg h-2 cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs uppercase tracking-wider text-soil-200 font-semibold">Brew Ratio (Coffee : Water)</label>
+                                <span class="text-soil-200 font-medium text-sm" id="calc-ratio-display">1 : 16</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculated Results Box -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-soil-900 p-5 rounded-2xl border border-soil-700/80 mb-6">
+                        <div>
+                            <span class="text-xs text-soil-200 uppercase block">Required Water</span>
+                            <span class="font-serif text-2xl font-bold text-savannah-400" id="calc-water-result">288 ml</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-soil-200 uppercase block">Grind Size</span>
+                            <span class="font-serif text-lg font-bold text-white" id="calc-grind-result">Medium-Fine</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-soil-200 uppercase block">Target Time</span>
+                            <span class="font-serif text-lg font-bold text-white" id="calc-time-result">3:00 - 3:30</span>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Timer Section -->
+                    <div class="flex items-center justify-between bg-highland-900 p-4 rounded-xl border border-highland-500/40">
+                        <div class="flex items-center gap-3">
+                            <div id="timer-display" class="font-mono text-2xl font-bold text-savannah-400">00:00</div>
+                            <span id="timer-status" class="text-xs text-soil-200">Ready to brew</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="startBrewTimer()" id="timer-start-btn" class="px-4 py-2 bg-soil-500 hover:bg-soil-700 text-white rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors">Start</button>
+                            <button onclick="resetBrewTimer()" class="px-3 py-2 bg-soil-800 hover:bg-soil-700 text-soil-200 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flavor-profiler" class="py-24 px-4 sm:px-8 bg-highland-900 text-white relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-soil-500 font-semibold text-xs sm:text-sm uppercase tracking-widest block mb-2">Personalized Recommendation</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold">Interactive Sensory Profiler</h2>
+                <p class="text-soil-200 mt-4 text-base font-light">Select your preferred sensory elements below to let our algorithm match you with the ultimate Kenyan single-origin micro-lot.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Preference 1: Acidity & Brightness -->
+                <div class="glass-card p-6 rounded-2xl border border-soil-700/50">
+                    <h3 class="font-serif text-lg font-bold text-savannah-400 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-lemon"></i>
+                        <span>Acidity & Brightness</span>
+                    </h3>
+                    <div class="space-y-3">
+                        <button onclick="setFlavorPreference('acidity', 'high')" class="pref-acidity w-full py-3 px-4 rounded-xl bg-soil-800/80 border border-soil-700 text-left text-sm font-medium hover:border-soil-500 transition-colors flex justify-between items-center" data-val="high">
+                            <span>Vibrant & Juicy (Blackcurrant/Citrus)</span>
+                            <i class="fa-solid fa-circle-check opacity-0 text-savannah-400"></i>
+                        </button>
+                        <button onclick="setFlavorPreference('acidity', 'medium')" class="pref-acidity w-full py-3 px-4 rounded-xl bg-soil-800/80 border border-soil-700 text-left text-sm font-medium hover:border-soil-500 transition-colors flex justify-between items-center" data-val="medium">
+                            <span>Smooth & Balanced Acidity</span>
+                            <i class="fa-solid fa-circle-check opacity-0 text-savannah-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preference 2: Body & Mouthfeel -->
+                <div class="glass-card p-6 rounded-2xl border border-soil-700/50">
+                    <h3 class="font-serif text-lg font-bold text-savannah-400 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-wine-glass font-bold"></i>
+                        <span>Body & Mouthfeel</span>
+                    </h3>
+                    <div class="space-y-3">
+                        <button onclick="setFlavorPreference('body', 'syrupy')" class="pref-body w-full py-3 px-4 rounded-xl bg-soil-800/80 border border-soil-700 text-left text-sm font-medium hover:border-soil-500 transition-colors flex justify-between items-center" data-val="syrupy">
+                            <span>Syrupy & Heavy (Winey)</span>
+                            <i class="fa-solid fa-circle-check opacity-0 text-savannah-400"></i>
+                        </button>
+                        <button onclick="setFlavorPreference('body', 'silky')" class="pref-body w-full py-3 px-4 rounded-xl bg-soil-800/80 border border-soil-700 text-left text-sm font-medium hover:border-soil-500 transition-colors flex justify-between items-center" data-val="silky">
+                            <span>Tea-like & Silky Smooth</span>
+                            <i class="fa-solid fa-circle-check opacity-0 text-savannah-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preference 3: Dominant Flavor Notes -->
+                <div class="glass-card p-6 rounded-2xl border border-soil-700/50">
+                    <h3 class="font-serif text-lg font-bold text-savannah-400 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-seedling"></i>
+                        <span>Dominant Flavor Notes</span>
+                    </h3>
+                    <div class="space-y-3">
+                        <button onclick="setFlavorPreference('note', 'fruity')" class="pref-note w-full py-3 px-4 rounded-xl bg-soil-800/80 border border-soil-700 text-left text-sm font-medium hover:border-soil-500 transition-colors flex justify-between items-center" data-val="fruity">
+                            <span>Berry, Grape & Citrus</span>
+                            <i class="fa-solid fa-circle-check opacity-0 text-savannah-400"></i>
+                        </button>
+                        <button onclick="setFlavorPreference('note', 'spiced')" class="pref-note w-full py-3 px-4 rounded-xl bg-soil-800/80 border border-soil-700 text-left text-sm font-medium hover:border-soil-500 transition-colors flex justify-between items-center" data-val="spiced">
+                            <span>Dark Chocolate & Swahili Spice</span>
+                            <i class="fa-solid fa-circle-check opacity-0 text-savannah-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Match Result Output Card -->
+            <div id="flavor-match-result" class="mt-12 bg-soil-900 border border-savannah-400/40 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl hidden transition-all duration-500">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <img id="match-img" src="" alt="Matched Coffee" class="w-36 h-36 object-cover rounded-2xl border-2 border-savannah-400 shadow-md">
+                    <div class="space-y-3 text-center md:text-left flex-1">
+                        <div class="inline-block bg-soil-500/30 text-savannah-400 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">Your Ideal Match</div>
+                        <h3 id="match-title" class="font-serif text-3xl font-bold text-white">---</h3>
+                        <p id="match-desc" class="text-soil-200 text-sm font-light">---</p>
+                        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                            <span id="match-price" class="font-serif text-2xl font-bold text-savannah-400">$0.00</span>
+                            <button id="match-add-btn" class="px-6 py-2.5 bg-soil-500 hover:bg-soil-700 text-white rounded-full text-xs font-semibold uppercase tracking-wider transition-colors shadow-lg shadow-soil-900">
+                                Select This Match
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex justify-end transition-opacity duration-300">
+        <div class="w-full max-w-md bg-soil-900 h-full p-6 flex flex-col justify-between overflow-y-auto border-l border-soil-700 shadow-2xl">
+            <div>
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-soil-800">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-savannah-400 text-xl"></i>
+                        <h3 class="font-serif text-xl font-bold text-white">Your Coffee Bag</h3>
+                    </div>
+                    <button onclick="toggleCartModal()" class="text-soil-200 hover:text-white text-xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items Container -->
+                <div id="cart-items-container" class="py-6 space-y-4">
+                    <!-- Javascript dynamic cart items load here -->
+                </div>
+            </div>
+
+            <!-- Cart Summary & Checkout -->
+            <div class="border-t border-soil-800 pt-4 space-y-4">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-soil-200">Subtotal</span>
+                    <span id="cart-subtotal" class="font-serif text-xl font-bold text-savannah-400">$0.00</span>
+                </div>
+                <p class="text-xs text-soil-200 font-light">Freshly roasted on demand in Nairobi. Shipped globally with climate-neutral packaging.</p>
+                <button onclick="checkoutNotice()" class="w-full py-4 bg-soil-500 hover:bg-soil-700 text-white font-semibold text-xs uppercase tracking-widest rounded-full transition-colors shadow-lg shadow-soil-900">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="add-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-soil-900 border border-soil-700 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
+            <button onclick="closeAddModal()" class="absolute top-6 right-6 text-soil-200 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div>
+                <span id="modal-category" class="text-savannah-400 text-xs font-semibold uppercase tracking-wider">Single Origin</span>
+                <h3 id="modal-title" class="font-serif text-2xl font-bold text-white mt-1">Coffee Title</h3>
+                <p id="modal-price" class="text-lg font-serif text-savannah-400 font-bold mt-1">$0.00</p>
+            </div>
+
+            <!-- Grind Size Selector -->
+            <div>
+                <label class="text-xs uppercase tracking-wider text-soil-200 font-semibold block mb-2">Select Grind Profile</label>
+                <select id="modal-grind" class="w-full bg-soil-800 border border-soil-700 text-white rounded-xl p-3 text-sm focus:outline-none focus:border-soil-500">
+                    <option value="Whole Bean">Whole Bean (Preserve Freshness)</option>
+                    <option value="Coarse (French Press)">Coarse (French Press / Cold Brew)</option>
+                    <option value="Medium (Chemex / Drip)">Medium (Chemex / Pour Over)</option>
+                    <option value="Fine (Espresso / Aeropress)">Fine (Espresso / AeroPress)</option>
+                </select>
+            </div>
+
+            <!-- Roast Profile Option -->
+            <div>
+                <label class="text-xs uppercase tracking-wider text-soil-200 font-semibold block mb-2">Select Roast Level</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <label class="cursor-pointer border border-soil-700 bg-soil-800 p-3 rounded-xl flex items-center gap-2 text-xs font-medium text-white hover:border-soil-500">
+                        <input type="radio" name="roast" value="Light-Medium" checked class="accent-soil-500">
+                        <span>Light-Medium (Floral & Bright)</span>
+                    </label>
+                    <label class="cursor-pointer border border-soil-700 bg-soil-800 p-3 rounded-xl flex items-center gap-2 text-xs font-medium text-white hover:border-soil-500">
+                        <input type="radio" name="roast" value="Medium-Dark" class="accent-soil-500">
+                        <span>Medium-Dark (Full Body)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Add Button -->
+            <button onclick="confirmAddToCart()" class="w-full py-4 bg-soil-500 hover:bg-soil-700 text-white font-semibold text-xs uppercase tracking-widest rounded-full transition-colors shadow-lg">
+                Add To Bag
+            </button>
+        </div>
+    </div>
+
+    <footer class="bg-highland-900 border-t border-soil-800 py-16 px-4 sm:px-8 text-soil-200 text-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+            <!-- Brand Info -->
+            <div class="space-y-4 md:col-span-1">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-soil-500 flex items-center justify-center text-white font-bold text-sm">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <span class="font-serif text-xl font-bold text-white tracking-wide">KAHWA YA KENYA</span>
+                </div>
+                <p class="text-xs font-light leading-relaxed">
+                    Celebrating Kenya's high-altitude specialty coffee heritage. Directly empowering smallholder farming co-operatives across Mt. Kenya and the Great Rift Valley.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-serif text-white font-bold text-base mb-4">Origins</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#regions" class="hover:text-savannah-400">Nyeri Hill Slopes</a></li>
+                    <li><a href="#regions" class="hover:text-savannah-400">Kirinyaga Foothills</a></li>
+                    <li><a href="#regions" class="hover:text-savannah-400">Murang'a Highlands</a></li>
+                    <li><a href="#regions" class="hover:text-savannah-400">Mount Elgon Volcanic Slopes</a></li>
+                </ul>
+            </div>
+
+            <!-- Cultivars -->
+            <div>
+                <h4 class="font-serif text-white font-bold text-base mb-4">Kenyan Cultivars</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><span class="text-savannah-400 font-semibold">SL28:</span> Renowned Blackcurrant & Citrus</li>
+                    <li><span class="text-savannah-400 font-semibold">SL34:</span> Heavy Body & Sweet Acidity</li>
+                    <li><span class="text-savannah-400 font-semibold">Batian:</span> Disease Resistant Micro-lot</li>
+                    <li><span class="text-savannah-400 font-semibold">Ruiru 11:</span> Compact & Vibrant</li>
+                </ul>
+            </div>
+
+            <!-- Swahili Culture Note -->
+            <div>
+                <h4 class="font-serif text-white font-bold text-base mb-4">Asante Sana!</h4>
+                <p class="text-xs font-light leading-relaxed mb-4">
+                    "Kahwa bora kutoka nchi ya Kenya" — Quality coffee from the heart of Kenya. Experience rich volcanic soil in every cup.
+                </p>
+                <div class="flex gap-4 text-lg">
+                    <a href="#" class="text-soil-200 hover:text-savannah-400"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-soil-200 hover:text-savannah-400"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="text-soil-200 hover:text-savannah-400"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-soil-800 text-center text-xs text-soil-200">
+            <p>&copy; 2026 Kahwa ya Kenya. Inspired by the Great Kenyan Coffee Environment.</p>
+        </div>
+    </footer>
+
+    <script>
+        // -------------------------------------------------------------
+        // Data Store: Coffee Regions
+        // -------------------------------------------------------------
+        const regionsData = [
+            {
+                id: 'nyeri',
+                name: 'Nyeri Hill Slopes',
+                elevation: '1,800m - 2,100m',
+                soil: 'Deep Red Volcanic Soil',
+                profile: 'Blackcurrant, Sparkling Grapefruit, Floral Jasmine',
+                description: 'Located between Mt. Kenya and the Aberdare Ranges. Cold high-altitude nights allow cherries to mature slowly, producing intense acidity and iconic berry flavor notes.',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1000&q=80',
+                varieties: 'SL28 & SL34'
+            },
+            {
+                id: 'kirinyaga',
+                name: 'Kirinyaga Foothills',
+                elevation: '1,700m - 2,000m',
+                soil: 'Rich Organic Volcanic Ash',
+                profile: 'Complex Black Cherry, Brown Sugar, Bright Lime',
+                description: 'Bordering the south-facing slopes of Mount Kenya. Micro-farmers here double-ferment cherries using crisp glacier meltwater, yielding unmatched cleanliness and sweet complexity.',
+                image: 'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=1000&q=80',
+                varieties: 'SL28, Batian'
+            },
+            {
+                id: 'muranga',
+                name: 'Murang\'a Terraces',
+                elevation: '1,600m - 1,900m',
+                soil: 'Humus-Rich Clay & Volcanic Loam',
+                profile: 'Sweet Plum, Dark Cocoa, Honey-like Sweetness',
+                description: 'Terraced coffee gardens with mist-covered valleys. Known for producing beans with a round, syrupy body paired with comforting spiced chocolate undertones.',
+                image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80',
+                varieties: 'Ruiru 11, SL28'
+            },
+            {
+                id: 'elgon',
+                name: 'Mount Elgon Western Slopes',
+                elevation: '1,750m - 2,100m',
+                soil: 'Ancient Volcanic Lava Mineral Base',
+                profile: 'Tropical Passion Fruit, Lemongrass, Floral Honey',
+                description: 'Nurtured along the western border of Kenya. The unique microclimate yields subtle floral aromas with crisp lemongrass and tropical acidity.',
+                image: 'https://images.unsplash.com/photo-1524350876685-274059332603?auto=format&fit=crop&w=1000&q=80',
+                varieties: 'Batian, SL34'
+            }
+        ];
+
+        // -------------------------------------------------------------
+        // Data Store: Coffee Products
+        // -------------------------------------------------------------
+        const productsData = [
+            {
+                id: 'prod-1',
+                title: 'Nyeri AA Peaberry Reserve',
+                category: 'reserve',
+                region: 'Nyeri',
+                price: 24.50,
+                rating: 4.9,
+                notes: ['Blackcurrant', 'Grapefruit', 'Cane Sugar'],
+                roast: 'Light-Medium',
+                image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80',
+                desc: 'Rare single-grain peaberry selection from the high slopes of Nyeri. Unrivaled berry intensity.',
+                acidity: 'high',
+                body: 'silky',
+                flavorGroup: 'fruity'
+            },
+            {
+                id: 'prod-2',
+                title: 'Kirinyaga SL28 Washed',
+                category: 'single-origin',
+                region: 'Kirinyaga',
+                price: 21.00,
+                rating: 4.8,
+                notes: ['Black Cherry', 'Lime Zest', 'Jasmine'],
+                roast: 'Light',
+                image: 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=600&q=80',
+                desc: 'Classic double-washed Kenyan SL28 cultivar with vibrant acidity and crisp citrus floral finish.',
+                acidity: 'high',
+                body: 'syrupy',
+                flavorGroup: 'fruity'
+            },
+            {
+                id: 'prod-3',
+                title: 'Kahwa Swahili Spiced Roast',
+                category: 'signature',
+                region: 'Murang\'a & Coast Blend',
+                price: 19.50,
+                rating: 4.7,
+                notes: ['Cardamom', 'Dark Chocolate', 'Cinnamon'],
+                roast: 'Medium-Dark',
+                image: 'https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=600&q=80',
+                desc: 'Inspired by traditional Swahili Kahwa culture. Infused with cardamom pod notes and heavy cocoa.',
+                acidity: 'medium',
+                body: 'syrupy',
+                flavorGroup: 'spiced'
+            },
+            {
+                id: 'prod-4',
+                title: 'Mount Elgon Batian Microlot',
+                category: 'reserve',
+                region: 'Mount Elgon',
+                price: 26.00,
+                rating: 5.0,
+                notes: ['Passion Fruit', 'Honey', 'Lemongrass'],
+                roast: 'Light',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+                desc: 'Limited smallholder harvest showcasing high-altitude tropical sweet aromatics.',
+                acidity: 'high',
+                body: 'silky',
+                flavorGroup: 'fruity'
+            },
+            {
+                id: 'prod-5',
+                title: 'Aberdare Highland Natural',
+                category: 'single-origin',
+                region: 'Aberdare Ridge',
+                price: 22.50,
+                rating: 4.8,
+                notes: ['Ripe Plum', 'Dried Fig', 'Winey Acidity'],
+                roast: 'Medium',
+                image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
+                desc: 'Sun-dried naturally inside whole cherry pods on African raised beds for a heavy winey mouthfeel.',
+                acidity: 'medium',
+                body: 'syrupy',
+                flavorGroup: 'fruity'
+            },
+            {
+                id: 'prod-6',
+                title: 'Nairobi Barista Espresso Blend',
+                category: 'signature',
+                region: 'Central Kenya Co-op Blend',
+                price: 18.00,
+                rating: 4.6,
+                notes: ['Toasted Almond', 'Caramel', 'Dark Cocoa'],
+                roast: 'Medium-Dark',
+                image: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600&q=80',
+                desc: 'Crafted for rich crema, full body, and balanced sweetness in espresso and milk drinks.',
+                acidity: 'medium',
+                body: 'syrupy',
+                flavorGroup: 'spiced'
+            }
+        ];
+
+        // -------------------------------------------------------------
+        // State Management
+        // -------------------------------------------------------------
+        let cart = [];
+        let activeRegion = regionsData[0];
+        let selectedProductForModal = null;
+        let flavorPreferences = { acidity: 'high', body: 'syrupy', note: 'fruity' };
+
+        // Brew Calculator State
+        let brewMethod = 'v60';
+        const brewRatios = {
+            v60: { ratio: 16, grind: 'Medium-Fine', time: '3:00 - 3:30' },
+            chemex: { ratio: 15, grind: 'Medium-Coarse', time: '4:00 - 4:30' },
+            aeropress: { ratio: 12, grind: 'Fine-Medium', time: '1:45 - 2:15' },
+            frenchpress: { ratio: 14, grind: 'Coarse', time: '4:00 - 5:00' }
+        };
+
+        // Timer State
+        let timerInterval = null;
+        let timerSeconds = 0;
+        let isTimerRunning = false;
+
+        // -------------------------------------------------------------
+        // Initialization on DOM Load
+        // -------------------------------------------------------------
+        window.addEventListener('DOMContentLoaded', () => {
+            renderRegionSelector();
+            renderRegionDetail();
+            renderProducts(productsData);
+            updateBrewCalculator();
+            updateFlavorMatch();
+        });
+
+        // -------------------------------------------------------------
+        // Region Component Renderers
+        // -------------------------------------------------------------
+        function renderRegionSelector() {
+            const container = document.getElementById('region-selector-container');
+            container.innerHTML = regionsData.map(reg => `
+                <button onclick="selectRegion('${reg.id}')" 
+                    class="w-full text-left p-5 rounded-2xl border transition-all flex items-center justify-between ${reg.id === activeRegion.id ? 'bg-soil-500 text-white border-soil-500 shadow-lg shadow-soil-500/20' : 'bg-soil-900/60 text-soil-200 border-soil-700/60 hover:border-soil-500'}">
+                    <div>
+                        <h4 class="font-serif font-bold text-lg">${reg.name}</h4>
+                        <p class="text-xs opacity-80 mt-1"><i class="fa-solid fa-mountain-sun mr-1"></i> ${reg.elevation}</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-sm opacity-60"></i>
+                </button>
+            `).join('');
+        }
+
+        function selectRegion(id) {
+            activeRegion = regionsData.find(r => r.id === id);
+            renderRegionSelector();
+            renderRegionDetail();
+        }
+
+        function renderRegionDetail() {
+            const card = document.getElementById('region-detail-card');
+            card.innerHTML = `
+                <div class="relative z-10 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-soil-700/60 pb-4">
+                        <div>
+                            <span class="text-savannah-400 text-xs uppercase font-bold tracking-widest block">Featured Terroir</span>
+                            <h3 class="font-serif text-3xl font-bold text-white mt-1">${activeRegion.name}</h3>
+                        </div>
+                        <span class="bg-highland-500/30 text-savannah-400 text-xs px-3 py-1 rounded-full border border-highland-500/50">
+                            Cultivars: ${activeRegion.varieties}
+                        </span>
+                    </div>
+
+                    <p class="text-soil-200 text-sm font-light leading-relaxed">${activeRegion.description}</p>
+
+                    <div class="grid grid-cols-2 gap-4 text-xs">
+                        <div class="bg-soil-800/80 p-3 rounded-xl border border-soil-700/60">
+                            <span class="text-soil-200 block uppercase font-semibold">Soil Type</span>
+                            <span class="text-white font-serif text-sm font-bold mt-0.5 block">${activeRegion.soil}</span>
+                        </div>
+                        <div class="bg-soil-800/80 p-3 rounded-xl border border-soil-700/60">
+                            <span class="text-soil-200 block uppercase font-semibold">Tasting Cup Notes</span>
+                            <span class="text-savannah-400 font-serif text-sm font-bold mt-0.5 block">${activeRegion.profile}</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="#shop" onclick="filterProducts('all')" class="inline-flex items-center gap-2 text-savannah-400 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors">
+                            <span>Browse Beans From ${activeRegion.name}</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-soil-500/10 blur-3xl pointer-events-none"></div>
+            `;
+        }
+
+        // -------------------------------------------------------------
+        // Product Showcase Renderers & Filters
+        // -------------------------------------------------------------
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = items.map(p => `
+                <div class="bg-soil-800/80 rounded-3xl border border-soil-700/60 overflow-hidden shadow-xl hover:border-soil-500 transition-all group flex flex-col justify-between">
+                    <div>
+                        <!-- Product Image Box -->
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-soil-900 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-highland-900/90 text-savannah-400 text-xs px-3 py-1 rounded-full font-semibold border border-highland-500/40">
+                                ${p.region}
+                            </span>
+                            <span class="absolute top-4 right-4 bg-soil-900/90 text-white text-xs px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-star text-savannah-400 text-xs"></i> ${p.rating}
+                            </span>
+                        </div>
+
+                        <!-- Product Content -->
+                        <div class="p-6">
+                            <h3 class="font-serif text-xl font-bold text-white mb-2 group-hover:text-savannah-400 transition-colors">${p.title}</h3>
+                            <p class="text-soil-200 text-xs font-light leading-relaxed mb-4">${p.desc}</p>
+                            
+                            <!-- Taste Notes Badges -->
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                ${p.notes.map(note => `<span class="bg-soil-900 text-soil-200 text-xs px-2.5 py-1 rounded-md border border-soil-700/50">${note}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Action -->
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-soil-700/40 mt-2">
+                        <span class="font-serif text-2xl font-bold text-savannah-400">$${p.price.toFixed(2)}</span>
+                        <button onclick="openAddModal('${p.id}')" class="px-4 py-2.5 bg-soil-500 hover:bg-soil-700 text-white rounded-full text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                            <span>Select Roast</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(category) {
+            // Update button active UI
+            document.querySelectorAll('#filter-buttons .filter-btn').forEach(btn => {
+                btn.classList.remove('bg-soil-500', 'text-white', 'border-soil-500');
+                btn.classList.add('bg-soil-800', 'text-soil-200', 'border-soil-700');
+            });
+            event.target.classList.remove('bg-soil-800', 'text-soil-200', 'border-soil-700');
+            event.target.classList.add('bg-soil-500', 'text-white', 'border-soil-500');
+
+            if (category === 'all') {
+                renderProducts(productsData);
+            } else {
+                const filtered = productsData.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // -------------------------------------------------------------
+        // Brew Calculator Logic
+        // -------------------------------------------------------------
+        function setBrewMethod(method) {
+            brewMethod = method;
+            document.querySelectorAll('.brew-btn').forEach(b => {
+                b.classList.remove('bg-soil-500', 'border-soil-500', 'text-white');
+                b.classList.add('bg-soil-900/50', 'border-soil-700', 'text-soil-200');
+            });
+            const activeBtn = document.getElementById(`btn-${method}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-soil-900/50', 'border-soil-700', 'text-soil-200');
+                activeBtn.classList.add('bg-soil-500', 'border-soil-500', 'text-white');
+            }
+            updateBrewCalculator();
+        }
+
+        function updateBrewCalculator() {
+            const grams = parseInt(document.getElementById('coffee-range').value);
+            const config = brewRatios[brewMethod];
+            const requiredWater = grams * config.ratio;
+
+            document.getElementById('calc-coffee-display').innerText = grams;
+            document.getElementById('calc-ratio-display').innerText = `1 : ${config.ratio}`;
+            document.getElementById('calc-water-result').innerText = `${requiredWater} ml`;
+            document.getElementById('calc-grind-result').innerText = config.grind;
+            document.getElementById('calc-time-result').innerText = config.time;
+        }
+
+        // Brew Timer Functions
+        function startBrewTimer() {
+            const btn = document.getElementById('timer-start-btn');
+            if (isTimerRunning) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                btn.innerText = 'Start';
+                document.getElementById('timer-status').innerText = 'Paused';
+            } else {
+                isTimerRunning = true;
+                btn.innerText = 'Pause';
+                document.getElementById('timer-status').innerText = 'Brewing...';
+                timerInterval = setInterval(() => {
+                    timerSeconds++;
+                    const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+                    const secs = (timerSeconds % 60).toString().padStart(2, '0');
+                    document.getElementById('timer-display').innerText = `${mins}:${secs}`;
+                }, 1000);
+            }
+        }
+
+        function resetBrewTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            timerSeconds = 0;
+            document.getElementById('timer-display').innerText = '00:00';
+            document.getElementById('timer-start-btn').innerText = 'Start';
+            document.getElementById('timer-status').innerText = 'Ready to brew';
+        }
+
+        // -------------------------------------------------------------
+        // Flavor Profiler Matching Engine
+        // -------------------------------------------------------------
+        function setFlavorPreference(type, value) {
+            flavorPreferences[type] = value;
+
+            // Highlight active button for category
+            document.querySelectorAll(`.pref-${type}`).forEach(btn => {
+                const isSelected = btn.getAttribute('data-val') === value;
+                const icon = btn.querySelector('.fa-circle-check');
+                if (isSelected) {
+                    btn.classList.add('border-savannah-400', 'bg-soil-700/60');
+                    icon.classList.remove('opacity-0');
+                } else {
+                    btn.classList.remove('border-savannah-400', 'bg-soil-700/60');
+                    icon.classList.add('opacity-0');
+                }
+            });
+
+            updateFlavorMatch();
+        }
+
+        function updateFlavorMatch() {
+            // Find product matching user selections best
+            let matched = productsData.find(p => p.acidity === flavorPreferences.acidity && p.flavorGroup === flavorPreferences.note) 
+                        || productsData[0];
+
+            const resultCard = document.getElementById('flavor-match-result');
+            resultCard.classList.remove('hidden');
+
+            document.getElementById('match-img').src = matched.image;
+            document.getElementById('match-title').innerText = matched.title;
+            document.getElementById('match-desc').innerText = matched.desc;
+            document.getElementById('match-price').innerText = `$${matched.price.toFixed(2)}`;
+
+            const addBtn = document.getElementById('match-add-btn');
+            addBtn.onclick = () => openAddModal(matched.id);
+        }
+
+        // -------------------------------------------------------------
+        // Shopping Cart & Modal Logic
+        // -------------------------------------------------------------
+        function openAddModal(prodId) {
+            selectedProductForModal = productsData.find(p => p.id === prodId);
+            if (!selectedProductForModal) return;
+
+            document.getElementById('modal-category').innerText = selectedProductForModal.region;
+            document.getElementById('modal-title').innerText = selectedProductForModal.title;
+            document.getElementById('modal-price').innerText = `$${selectedProductForModal.price.toFixed(2)}`;
+            document.getElementById('add-modal').classList.remove('hidden');
+        }
+
+        function closeAddModal() {
+            document.getElementById('add-modal').classList.add('hidden');
+            selectedProductForModal = null;
+        }
+
+        function confirmAddToCart() {
+            if (!selectedProductForModal) return;
+
+            const grind = document.getElementById('modal-grind').value;
+            const roast = document.querySelector('input[name="roast"]:checked').value;
+
+            const cartItem = {
+                ...selectedProductForModal,
+                cartId: `${selectedProductForModal.id}-${Date.now()}`,
+                selectedGrind: grind,
+                selectedRoast: roast,
+                quantity: 1
+            };
+
+            cart.push(cartItem);
+            closeAddModal();
+            updateCartUI();
+            toggleCartModal();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            badge.innerText = cart.length;
+            if (cart.length > 0) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            const container = document.getElementById('cart-items-container');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-soil-200">
+                        <i class="fa-solid fa-mug-saucer text-4xl mb-3 text-soil-700"></i>
+                        <p class="text-sm font-light">Your coffee bag is currently empty.</p>
+                    </div>
+                `;
+                document.getElementById('cart-subtotal').innerText = '$0.00';
+                return;
+            }
+
+            let subtotal = 0;
+            container.innerHTML = cart.map((item, index) => {
+                subtotal += item.price * item.quantity;
+                return `
+                    <div class="bg-soil-800 p-4 rounded-2xl border border-soil-700 flex gap-3 items-center">
+                        <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded-xl border border-soil-600">
+                        <div class="flex-1">
+                            <h4 class="font-serif font-bold text-white text-sm">${item.title}</h4>
+                            <p class="text-xs text-savannah-400 mt-0.5">${item.selectedGrind}</p>
+                            <span class="text-xs text-soil-200 block">${item.selectedRoast}</span>
+                            <span class="font-serif font-bold text-white text-sm mt-1 block">$${item.price.toFixed(2)}</span>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-soil-200 hover:text-red-400 p-2">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cart-subtotal').innerText = `$${subtotal.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function checkoutNotice() {
+            if (cart.length === 0) {
+                alert("Your bag is empty! Select a highland roast first.");
+                return;
+            }
+            alert("Asante sana! (Thank you!) This is a demo presentation. In a production environment, this connects directly to M-Pesa or global card checkout.");
+        }
+    </script>
+</body>
+</html>
